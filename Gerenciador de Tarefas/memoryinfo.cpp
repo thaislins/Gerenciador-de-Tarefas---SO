@@ -18,6 +18,7 @@ bool MemoryInfo::fileRead() {
         exit(EXIT_FAILURE);
     }
     else {
+        v.clear();
         for (int i = 0; i < 16; ++i)
         {
             getline(file,line);

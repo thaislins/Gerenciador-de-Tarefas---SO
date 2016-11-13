@@ -121,14 +121,14 @@ void SystemMonitor::initChartDischarge() {
     // Create pen for Charge
     ui->chartDischarge->addGraph();
     ui->chartDischarge->graph(0)->setPen(QPen(availableColors.at(1)));
-    ui->chartDischarge->graph(0)->setName("Tempo de Descarga");
+    ui->chartDischarge->graph(0)->setName("Tempo de Descarga (minutos)");
 
     // Set X axis
     ui->chartDischarge->xAxis->setTickLabels(true);
     ui->chartDischarge->axisRect()->setupFullAxesBox();
 
     // Set y axis
-    ui->chartDischarge->yAxis->setRange(-0.01, 1.05);
+    ui->chartDischarge->yAxis->setRange(-0.5, 180);
 
     // Legend Settings
     ui->chartDischarge->legend->setVisible(true);

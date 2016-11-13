@@ -18,7 +18,7 @@ bool DischargeTime::fileRead()
         exit(EXIT_FAILURE);
     }
     else {
-
+        v.clear();
         for (int i = 0; i < 16; ++i)
         {
             getline(file,line);
@@ -46,5 +46,5 @@ void DischargeTime::calculateDischargeTime()
 
 double DischargeTime::getDischargeTime()
 {
-    return dischargetime;
+    return dischargetime * 60;
 }
