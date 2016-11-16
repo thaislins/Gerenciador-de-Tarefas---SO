@@ -40,7 +40,8 @@ void DischargeTime::calculateDischargeTime()
     {
         double value1 = v[9],value2 = v[10],value3 = v[7];
 
-        dischargetime = (value1 - value2)/value3;
+        //dischargetime = (value1 - value2)/value3;
+        dischargetime = value2/value3;
     }
 }
 

@@ -44,9 +44,9 @@ void MemoryInfo::calculatePercentage() {
 }
 
 double MemoryInfo::getPercentMem() {
-    return percentmem;
+    return percentmem*100.0;
 }
 
 double MemoryInfo::getPercentSwap() {
-    return percentswap;
+    return percentswap*100.0;
 }

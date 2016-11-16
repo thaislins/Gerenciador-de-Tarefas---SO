@@ -8,6 +8,7 @@
 #include "dischargetime.h"
 #include "batterypercentage.h"
 #include "memoryinfo.h"
+#include "cpuinfo.h"
 
 namespace Ui {
 class SystemMonitor;
@@ -23,12 +24,19 @@ class SystemMonitor : public QMainWindow {
     void initChartMemory();
     void initChartCharge();
     void initChartDischarge();
+    void update();
+
+signals:
+    void updateCpu(QVector<double>);
+    void updateMemory(double,double);
+    void updateBatteryPercentage(double);
+    void updateDischargeTime(double);
 
  private slots:
-    void updateChartCPU();
-    void updateChartMemory();
-    void updateChartCharge();
-    void updateChartDischarge();
+    void updateChartCPU(QVector<double>);
+    void updateChartMemory(double,double);
+    void updateChartCharge(double);
+    void updateChartDischarge(double);
 
  private:
     Ui::SystemMonitor *ui;
@@ -38,9 +46,21 @@ class SystemMonitor : public QMainWindow {
     QTimer timerDischarge;
     QVector<QColor> availableColors;
 
+    void runChartCpu();
+    void runChartMemory();
+    void runChartBatteryPercentage();
+    void runChartDischargeTime();
+
+    bool up;
+    std::thread threadCpu;
+    std::thread threadMemory;
+    std::thread threadBatteryPercentage;
+    std::thread threadDischargeTime;
+
     DischargeTime d;
     BatteryPercentage b;
     MemoryInfo m;
+    CpuInfo c;
 };
 
 #endif // GERENCIADOR_TAREFAS_H

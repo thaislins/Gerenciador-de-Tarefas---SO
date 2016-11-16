@@ -16,12 +16,14 @@ SOURCES += main.cpp \
            qcustomplot.cpp \
     dischargetime.cpp \
     batterypercentage.cpp \
-    memoryinfo.cpp
+    memoryinfo.cpp \
+    cpuinfo.cpp
 
 HEADERS  += gerenciador_tarefas.h \
             qcustomplot.h \
     dischargetime.h \
     batterypercentage.h \
-    memoryinfo.h
+    memoryinfo.h \
+    cpuinfo.h
 
 FORMS    += gerenciador_tarefas.ui

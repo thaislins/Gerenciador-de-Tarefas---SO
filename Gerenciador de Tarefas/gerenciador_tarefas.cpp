@@ -17,10 +17,73 @@ SystemMonitor::SystemMonitor(QWidget *parent) : QMainWindow(parent), ui(new Ui::
     initChartMemory();
     initChartCharge();
     initChartDischarge();
+
+    up = true;
+    qRegisterMetaType<QVector<double> >("QVector<double>");
+    connect(this,SIGNAL(updateCpu(QVector<double>)),SLOT(updateChartCPU(QVector<double>)));
+    connect(this,SIGNAL(updateMemory(double,double)),SLOT(updateChartMemory(double,double)));
+    connect(this,SIGNAL(updateBatteryPercentage(double)),SLOT(updateChartCharge(double)));
+    connect(this,SIGNAL(updateDischargeTime(double)),SLOT(updateChartDischarge(double)));
+
+    update();
 }
 
 SystemMonitor::~SystemMonitor() {
     delete ui;
+}
+
+void SystemMonitor::update()
+{
+    if (up)
+    {
+        threadDischargeTime = std::thread(&SystemMonitor::runChartDischargeTime,this);
+        threadBatteryPercentage = std::thread(&SystemMonitor::runChartBatteryPercentage,this);
+        threadMemory = std::thread(&SystemMonitor::runChartMemory,this);
+        threadCpu = std::thread(&SystemMonitor::runChartCpu,this);
+        up = false;
+    }
+}
+
+void SystemMonitor::runChartCpu()
+{
+    while(true)
+    {
+       c.calculateCPU();
+       QVector<double> results;
+       for(int i = 0;i < 4;i++)
+            results.push_back(c.getCpuValue(i));
+       emit (updateCpu(results));
+       std::this_thread::sleep_for(std::chrono::milliseconds(500));
+    }
+}
+
+void SystemMonitor::runChartMemory()
+{
+    while(true)
+    {
+       m.calculatePercentage();
+       emit updateMemory(m.getPercentMem(),m.getPercentSwap());
+       std::this_thread::sleep_for(std::chrono::milliseconds(500));
+    }
+}
+
+void SystemMonitor::runChartBatteryPercentage()
+{
+    while(true)
+    {
+       emit updateBatteryPercentage(b.getBatteryPercentage());
+       std::this_thread::sleep_for(std::chrono::milliseconds(500));
+    }
+}
+
+void SystemMonitor::runChartDischargeTime()
+{
+    while(true)
+    {
+       d.calculateDischargeTime();
+       emit updateDischargeTime(d.getDischargeTime());
+       std::this_thread::sleep_for(std::chrono::milliseconds(500));
+    }
 }
 
 //
@@ -28,7 +91,7 @@ SystemMonitor::~SystemMonitor() {
 //
 
 void SystemMonitor::initChartCPU() {
-    unsigned nCPUs = std::thread::hardware_concurrency();
+    unsigned nCPUs = 4;
 
     // Create pens for each CPU and set his name
     for (auto i = 0u; i < nCPUs; i++) {
@@ -42,7 +105,7 @@ void SystemMonitor::initChartCPU() {
     ui->chartCPU->axisRect()->setupFullAxesBox();
 
     // Set y axis
-    ui->chartCPU->yAxis->setRange(-0.5, 100);
+    ui->chartCPU->yAxis->setRange(0, 100);
 
     // Legend Settings
     ui->chartCPU->legend->setVisible(true);
@@ -54,8 +117,8 @@ void SystemMonitor::initChartCPU() {
     connect(ui->chartCPU->yAxis, SIGNAL(rangeChanged(QCPRange)), ui->chartCPU->yAxis2, SLOT(setRange(QCPRange)));
 
     // setup a timer that repeatedly calls SystemMonitor::updateChartCPU
-    connect(&timerCPU, SIGNAL(timeout()), this, SLOT(updateChartCPU()));
-    timerCPU.start(0); // Interval 0 means to refresh as fast as possible
+    //connect(&timerCPU, SIGNAL(timeout()), this, SLOT(updateChartCPU()));
+    //timerCPU.start(0); // Interval 0 means to refresh as fast as possible
 }
 
 void SystemMonitor::initChartMemory() {
@@ -84,10 +147,6 @@ void SystemMonitor::initChartMemory() {
     // make left and bottom axes transfer their ranges to right and top axes:
     connect(ui->chartMemory->xAxis, SIGNAL(rangeChanged(QCPRange)), ui->chartMemory->xAxis2, SLOT(setRange(QCPRange)));
     connect(ui->chartMemory->yAxis, SIGNAL(rangeChanged(QCPRange)), ui->chartMemory->yAxis2, SLOT(setRange(QCPRange)));
-
-    // setup a timer that repeatedly calls SystemMonitor::updatechartMemory
-    connect(&timerMemory, SIGNAL(timeout()), this, SLOT(updateChartMemory()));
-    timerMemory.start(0); // Interval 0 means to refresh as fast as possible
 }
 
 void SystemMonitor::initChartCharge() {
@@ -111,10 +170,6 @@ void SystemMonitor::initChartCharge() {
     // make left and bottom axes transfer their ranges to right and top axes:
     connect(ui->chartCharge->xAxis, SIGNAL(rangeChanged(QCPRange)), ui->chartCharge->xAxis2, SLOT(setRange(QCPRange)));
     connect(ui->chartCharge->yAxis, SIGNAL(rangeChanged(QCPRange)), ui->chartCharge->yAxis2, SLOT(setRange(QCPRange)));
-
-    // setup a timer that repeatedly calls SystemMonitor::updatechartCharge
-    connect(&timerCharge, SIGNAL(timeout()), this, SLOT(updateChartCharge()));
-    timerCharge.start(0); // Interval 0 means to refresh as fast as possible
 }
 
 void SystemMonitor::initChartDischarge() {
@@ -128,7 +183,7 @@ void SystemMonitor::initChartDischarge() {
     ui->chartDischarge->axisRect()->setupFullAxesBox();
 
     // Set y axis
-    ui->chartDischarge->yAxis->setRange(-0.5, 180);
+    ui->chartDischarge->yAxis->setRange(-0.5, 240);
 
     // Legend Settings
     ui->chartDischarge->legend->setVisible(true);
@@ -138,44 +193,31 @@ void SystemMonitor::initChartDischarge() {
     // make left and bottom axes transfer their ranges to right and top axes:
     connect(ui->chartDischarge->xAxis, SIGNAL(rangeChanged(QCPRange)), ui->chartDischarge->xAxis2, SLOT(setRange(QCPRange)));
     connect(ui->chartDischarge->yAxis, SIGNAL(rangeChanged(QCPRange)), ui->chartDischarge->yAxis2, SLOT(setRange(QCPRange)));
-
-    // setup a timer that repeatedly calls SystemMonitor::updatechartDischarge
-    connect(&timerDischarge, SIGNAL(timeout()), this, SLOT(updateChartDischarge()));
-    timerDischarge.start(0); // Interval 0 means to refresh as fast as possible
 }
 
 //
 // Update Charts
 //
 
-void SystemMonitor::updateChartCPU() {
+void SystemMonitor::updateChartCPU(QVector<double> results) {
     static QTime time(QTime::currentTime());
     double key = time.elapsed()/1000.0;
     
-    double value0 = 0;
-    double value1 = 0;
-    double value2 = 0;
-    double value3 = 0;
-
     // add data to lines:
-    ui->chartCPU->graph(0)->addData(key, value0);
-    ui->chartCPU->graph(1)->addData(key, value1);
-    ui->chartCPU->graph(2)->addData(key, value2);
-    ui->chartCPU->graph(3)->addData(key, value3);
+    for(int i = 0;i < results.size();i++)
+        ui->chartCPU->graph(i)->addData(key,results[i]);
 
     // make key axis range scroll with the data (at a constant range size of 8):
     ui->chartCPU->xAxis->setRange(key, 8, Qt::AlignRight);
     ui->chartCPU->replot();
 }
 
-void SystemMonitor::updateChartMemory() {
-
-    m.calculatePercentage();
+void SystemMonitor::updateChartMemory(double memory,double swap) {
 
     static QTime time(QTime::currentTime());
     double key = time.elapsed()/1000.0;
-    double value0 = m.getPercentMem()*100.0;
-    double value1 = m.getPercentSwap()*100.0;
+    double value0 = memory;
+    double value1 = swap;
 
     // add data to lines:
     ui->chartMemory->graph(0)->addData(key, value0);
@@ -186,11 +228,11 @@ void SystemMonitor::updateChartMemory() {
     ui->chartMemory->replot();
 }
 
-void SystemMonitor::updateChartCharge() {
+void SystemMonitor::updateChartCharge(double batterypercentage) {
 
     static QTime time(QTime::currentTime());
     double key = time.elapsed()/1000.0;
-    double value = b.getBatteryPercentage();
+    double value = batterypercentage;
 
     // add data to lines:
     ui->chartCharge->graph(0)->addData(key,value);
@@ -200,13 +242,11 @@ void SystemMonitor::updateChartCharge() {
     ui->chartCharge->replot();
 }
 
-void SystemMonitor::updateChartDischarge() {
-
-    d.calculateDischargeTime();
-
+void SystemMonitor::updateChartDischarge(double dischargetime)
+{
     static QTime time(QTime::currentTime());
     double key = time.elapsed()/1000.0;
-    double value = d.getDischargeTime();
+    double value = dischargetime;
 
     // add data to lines:
     ui->chartDischarge->graph(0)->addData(key,value);
