@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui webenginewidgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport
 
@@ -17,13 +17,15 @@ SOURCES += main.cpp \
     dischargetime.cpp \
     batterypercentage.cpp \
     memoryinfo.cpp \
-    cpuinfo.cpp
+    cpuinfo.cpp \
+    process.cpp
 
 HEADERS  += gerenciador_tarefas.h \
             qcustomplot.h \
     dischargetime.h \
     batterypercentage.h \
     memoryinfo.h \
-    cpuinfo.h
+    cpuinfo.h \
+    process.h
 
 FORMS    += gerenciador_tarefas.ui

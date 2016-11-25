@@ -89,7 +89,7 @@ void CpuInfo::currentToprev() {
     prevUsage.clear();
     prevTotal.clear();
 
-    for (unsigned int i = 0; i < currentTotal.size(); ++i)
+    for (int i = 0; i < currentTotal.size(); ++i)
     {
         prevUsage.push_back(currentUsage[i]);
         prevTotal.push_back(currentTotal[i]);

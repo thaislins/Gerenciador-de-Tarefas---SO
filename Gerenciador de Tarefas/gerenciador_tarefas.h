@@ -9,6 +9,7 @@
 #include "batterypercentage.h"
 #include "memoryinfo.h"
 #include "cpuinfo.h"
+#include "process.h"
 
 namespace Ui {
 class SystemMonitor;
@@ -31,14 +32,20 @@ signals:
     void updateMemory(double,double);
     void updateBatteryPercentage(double);
     void updateDischargeTime(double);
+    void updateProcess(int);
 
  private slots:
     void updateChartCPU(QVector<double>);
     void updateChartMemory(double,double);
     void updateChartCharge(double);
     void updateChartDischarge(double);
+    void updateChartProc(int);
 
- private:
+    void on_pbKill_clicked();
+
+    void on_pbUpdate_clicked();
+
+private:
     Ui::SystemMonitor *ui;
     QTimer timerCPU;
     QTimer timerMemory;
@@ -61,6 +68,7 @@ signals:
     BatteryPercentage b;
     MemoryInfo m;
     CpuInfo c;
+    Process p;
 };
 
 #endif // GERENCIADOR_TAREFAS_H

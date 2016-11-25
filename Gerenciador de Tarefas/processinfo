@@ -1,0 +1,263 @@
+  PID  PPID %CPU %MEM NLWP COMMAND
+    1     0  0.0  0.0    1 systemd
+    2     0  0.0  0.0    1 kthreadd
+    3     2  0.0  0.0    1 ksoftirqd/0
+    5     2  0.0  0.0    1 kworker/0:0H
+    7     2  0.0  0.0    1 rcu_sched
+    8     2  0.0  0.0    1 rcu_bh
+    9     2  0.0  0.0    1 migration/0
+   10     2  0.0  0.0    1 watchdog/0
+   11     2  0.0  0.0    1 watchdog/1
+   12     2  0.0  0.0    1 migration/1
+   13     2  0.0  0.0    1 ksoftirqd/1
+   15     2  0.0  0.0    1 kworker/1:0H
+   16     2  0.0  0.0    1 watchdog/2
+   17     2  0.0  0.0    1 migration/2
+   18     2  0.0  0.0    1 ksoftirqd/2
+   20     2  0.0  0.0    1 kworker/2:0H
+   21     2  0.0  0.0    1 watchdog/3
+   22     2  0.0  0.0    1 migration/3
+   23     2  0.0  0.0    1 ksoftirqd/3
+   25     2  0.0  0.0    1 kworker/3:0H
+   26     2  0.0  0.0    1 kdevtmpfs
+   27     2  0.0  0.0    1 netns
+   28     2  0.0  0.0    1 perf
+   29     2  0.0  0.0    1 khungtaskd
+   30     2  0.0  0.0    1 writeback
+   31     2  0.0  0.0    1 ksmd
+   32     2  0.0  0.0    1 khugepaged
+   33     2  0.0  0.0    1 crypto
+   34     2  0.0  0.0    1 kintegrityd
+   35     2  0.0  0.0    1 bioset
+   36     2  0.0  0.0    1 kblockd
+   37     2  0.0  0.0    1 ata_sff
+   38     2  0.0  0.0    1 md
+   39     2  0.0  0.0    1 devfreq_wq
+   46     2  0.0  0.0    1 kswapd0
+   47     2  0.0  0.0    1 vmstat
+   48     2  0.0  0.0    1 fsnotify_mark
+   49     2  0.0  0.0    1 ecryptfs-kthrea
+   65     2  0.0  0.0    1 kthrotld
+   66     2  0.0  0.0    1 acpi_thermal_pm
+   68     2  0.0  0.0    1 bioset
+   69     2  0.0  0.0    1 bioset
+   70     2  0.0  0.0    1 bioset
+   71     2  0.0  0.0    1 bioset
+   72     2  0.0  0.0    1 bioset
+   73     2  0.0  0.0    1 bioset
+   74     2  0.0  0.0    1 bioset
+   75     2  0.0  0.0    1 bioset
+   76     2  0.0  0.0    1 bioset
+   77     2  0.0  0.0    1 bioset
+   78     2  0.0  0.0    1 bioset
+   79     2  0.0  0.0    1 bioset
+   80     2  0.0  0.0    1 bioset
+   81     2  0.0  0.0    1 bioset
+   82     2  0.0  0.0    1 bioset
+   83     2  0.0  0.0    1 bioset
+   84     2  0.0  0.0    1 bioset
+   85     2  0.0  0.0    1 bioset
+   86     2  0.0  0.0    1 bioset
+   87     2  0.0  0.0    1 bioset
+   88     2  0.0  0.0    1 bioset
+   90     2  0.0  0.0    1 bioset
+   91     2  0.0  0.0    1 bioset
+   92     2  0.0  0.0    1 bioset
+   96     2  0.0  0.0    1 ipv6_addrconf
+  110     2  0.0  0.0    1 deferwq
+  111     2  0.0  0.0    1 charger_manager
+  152     2  0.0  0.0    1 kpsmoused
+  153     2  0.0  0.0    1 scsi_eh_0
+  154     2  0.0  0.0    1 scsi_tmf_0
+  155     2  0.0  0.0    1 scsi_eh_1
+  156     2  0.0  0.0    1 scsi_tmf_1
+  157     2  0.0  0.0    1 scsi_eh_2
+  158     2  0.0  0.0    1 scsi_tmf_2
+  162     2  0.0  0.0    1 kfd_process_wq
+  165     2  0.0  0.0    1 ttm_swap
+  166     2  0.0  0.0    1 gfx
+  167     2  0.0  0.0    1 comp 1.0.0
+  168     2  0.0  0.0    1 comp 1.0.1
+  169     2  0.0  0.0    1 comp 1.0.2
+  170     2  0.0  0.0    1 comp 1.0.3
+  171     2  0.0  0.0    1 comp 1.0.4
+  172     2  0.0  0.0    1 comp 1.0.5
+  173     2  0.0  0.0    1 comp 1.0.6
+  174     2  0.0  0.0    1 comp 1.0.7
+  175     2  0.0  0.0    1 sdma0
+  176     2  0.0  0.0    1 sdma1
+  179     2  0.0  0.0    1 bioset
+  202     2  0.0  0.0    1 kworker/2:1H
+  204     2  0.0  0.0    1 jbd2/sda8-8
+  205     2  0.0  0.0    1 ext4-rsv-conver
+  254     2  0.0  0.0    1 kauditd
+  255     1  0.0  0.1    1 systemd-journal
+  287     1  0.0  0.0    1 systemd-udevd
+  297     2  0.0  0.0    1 kworker/0:1H
+  350     2  0.0  0.0    1 irq/39-DLL0641:
+  361     2  0.0  0.0    1 irq/51-mei_me
+  395     2  0.0  0.0    1 cfg80211
+  401     2  0.0  0.0    1 kworker/u17:0
+  402     2  0.0  0.0    1 hci0
+  403     2  0.0  0.0    1 hci0
+  404     2  0.0  0.0    1 irq/52-iwlwifi
+  405     2  0.0  0.0    1 kworker/u17:1
+  445     2  0.0  0.0    1 kworker/3:1H
+  468     2  0.0  0.0    1 kvm-irqfd-clean
+  605     1  0.0  0.0    2 systemd-timesyn
+  628     2  0.0  0.0    1 kmemstick
+  629     2  0.0  0.0    1 rtsx_usb_ms_1
+  710     1  0.0  0.0    1 cron
+  715     1  0.0  0.1    3 ModemManager
+  721     1  0.0  0.1    3 accounts-daemon
+  742     1  0.0  0.0    1 dbus-daemon
+  767     1  0.0  0.0    1 acpid
+  768     1  0.0  0.0    4 rsyslogd
+  769     1  0.0  0.2    3 NetworkManager
+  770     1  0.0  0.0    1 avahi-daemon
+  774     1  0.0  0.0    1 bluetoothd
+  781     1  0.0  0.1    2 thermald
+  784     1  0.0  0.0    1 cgmanager
+  788     1  0.0  0.0    1 systemd-logind
+  791     1  0.0  0.1    3 whoopsie
+  802     1  0.0  0.1    8 snapd
+  820   770  0.0  0.0    1 avahi-daemon
+  898     1  0.0  0.1    3 polkitd
+  904     1  0.0  0.0    1 irqbalance
+  973     1  0.0  0.0    3 lightdm
+  986   973  6.0  1.3    2 Xorg
+  997     1  0.0  0.0    1 wpa_supplicant
+ 1008     2  0.0  0.0    1 kworker/1:1H
+ 1065   973  0.0  0.0    3 lightdm
+ 1117     1  0.0  0.0    3 rtkit-daemon
+ 1142     1  0.1  0.1    3 upowerd
+ 1159     2  0.0  0.0    1 krfcommd
+ 1185     1  0.0  0.1    3 colord
+ 1248   769  0.0  0.0    1 dnsmasq
+ 1403     1  0.0  0.0    1 agetty
+ 1416     1  0.0  0.0    1 nmbd
+ 1434     1  0.0  0.1    1 smbd
+ 1436  1434  0.0  0.0    1 smbd
+ 1450  1434  0.0  0.0    1 smbd
+ 1491     1  0.0  0.0    1 systemd
+ 1531  1491  0.0  0.0    1 (sd-pam)
+ 1557     1  0.0  0.0    4 gnome-keyring-d
+ 1563  1065  0.0  0.0    1 upstart
+ 1638  1563  0.0  0.0    1 upstart-udev-br
+ 1652  1563  0.0  0.0    1 dbus-daemon
+ 1664  1563  0.0  0.1    1 window-stack-br
+ 1713  1563  0.0  0.0    1 gpg-agent
+ 1716  1563  0.0  0.0    1 upstart-dbus-br
+ 1718  1563  0.0  0.0    1 upstart-file-br
+ 1720  1563  0.0  0.0    1 upstart-dbus-br
+ 1722  1563  0.0  0.1    4 ibus-daemon
+ 1730  1563  0.0  0.0    3 gvfsd
+ 1740  1563  0.2  0.3    5 bamfdaemon
+ 1743  1563  0.0  0.0    6 gvfsd-fuse
+ 1746  1722  0.0  0.0    4 ibus-dconf
+ 1747  1722  0.0  0.3    4 ibus-ui-gtk3
+ 1756  1563  0.0  0.2    4 ibus-x11
+ 1764  1563  0.0  0.0    4 at-spi-bus-laun
+ 1769  1764  0.0  0.0    1 dbus-daemon
+ 1774  1563  0.0  0.0    3 at-spi2-registr
+ 1793  1722  0.0  0.0    3 ibus-engine-sim
+ 1811  1563  0.0  0.5    4 hud-service
+ 1813  1563  0.0  0.5    5 unity-settings-
+ 1820  1563  0.0  0.1    4 gnome-session-b
+ 1826  1563  0.0  0.5    5 unity-panel-ser
+ 1846  1563  0.0  0.0    3 dconf-service
+ 1858  1563  0.0  0.0    4 indicator-messa
+ 1859  1563  0.0  0.0    4 indicator-bluet
+ 1860  1563  0.0  0.1    4 indicator-power
+ 1869  1563  0.0  0.2    6 indicator-datet
+ 1870  1563  0.0  0.3    4 indicator-keybo
+ 1871  1563  0.0  0.1    4 indicator-sound
+ 1872  1563  0.0  0.2    4 indicator-print
+ 1873  1563  0.0  0.1    4 indicator-sessi
+ 1903  1563  4.2  3.1    8 compiz
+ 1904  1563  0.0  0.1    3 indicator-appli
+ 1913  1563  0.3  0.1    4 pulseaudio
+ 1915  1563  0.0  0.3    4 evolution-sourc
+ 1938  1813  0.0  0.0    1 syndaemon
+ 1975  1563  0.0  0.7    5 evolution-calen
+ 1981  1820  0.0  0.3    4 unity-fallback-
+ 1982  1820  0.0  0.2    4 polkit-gnome-au
+ 1983  1820  0.0  0.4    4 nm-applet
+ 1984  1820  0.0  0.7    4 nautilus
+ 2011  1563  0.0  0.1    3 gvfs-udisks2-vo
+ 2014     1  0.0  0.1    5 udisksd
+ 2017     1  0.0  0.4    7 fwupd
+ 2032  1563  0.0  0.0    3 gvfs-goa-volume
+ 2037  1563  0.0  0.1    4 gvfs-afc-volume
+ 2043  1563  0.0  0.1    3 gvfs-gphoto2-vo
+ 2046  1975  0.0  0.6    7 evolution-calen
+ 2056  1563  0.0  0.2    5 evolution-addre
+ 2058  1975  0.0  0.6    5 evolution-calen
+ 2066  1563  0.0  0.0    3 gvfs-mtp-volume
+ 2081  2056  0.0  0.2    5 evolution-addre
+ 2101  1563  0.0  0.0    3 gvfsd-trash
+ 2137  1563  0.0  0.0    3 gvfsd-burn
+ 2172  1563  0.0  0.0    3 gvfsd-metadata
+ 2185  1563  2.2  2.9   37 chrome
+ 2191  2185  0.0  0.0    1 cat
+ 2192  2185  0.0  0.0    1 cat
+ 2195  2185  0.0  0.5    1 chrome
+ 2196  2195  0.0  0.0    1 nacl_helper
+ 2199  2195  0.0  0.1    1 chrome
+ 2207  1563  0.0  0.0    1 gconfd-2
+ 2279  2185  1.5  2.0    3 chrome
+ 2285  2279  0.0  0.1    1 chrome
+ 2347  2199  0.2  2.3   17 chrome
+ 2469  1563  0.0  0.2    4 unity-scope-hom
+ 2481  1563  0.0  0.3    4 unity-scope-loa
+ 2483  1563  0.0  0.2    8 unity-files-dae
+ 2492  1563  0.0  0.0    1 sh
+ 2498  2492  0.0  0.0    3 zeitgeist-daemo
+ 2506  1563  0.0  0.2    3 zeitgeist-fts
+ 2510  1563  0.0  0.2    7 zeitgeist-datah
+ 2640  2199  0.0  1.3    9 chrome
+ 2729  1563  0.0  0.3    4 gvfsd-http
+ 2814  1563  0.0  1.6    4 notify-osd
+ 2905  1820  0.0  0.3    4 update-notifier
+ 2978  1820  0.0  0.0    4 deja-dup-monito
+ 3301     1  0.0  0.1    3 cups-browsed
+ 3408  2199  0.0  0.8    7 chrome
+ 3415  2199  0.0  1.3    8 chrome
+ 3445  2199  0.0  0.5    2 chrome
+ 3458  1563  0.0  0.1    3 unity-music-dae
+ 8409   769  0.0  0.0    1 dhclient
+ 9138  1563  0.9  1.9   34 spotify
+ 9144  9138  0.0  0.4    1 spotify
+ 9158  9138  0.2  1.3    3 spotify
+ 9170  9144  0.7  3.5   12 spotify
+ 9346  2199  1.8  4.4   14 chrome
+ 9830  1563  0.5  5.0   10 qtcreator
+ 9925  1563  0.0  0.0    4 gvfsd-network
+ 9952  1563  0.0  0.0    3 gvfsd-dnssd
+10087     2  0.0  0.0    1 kworker/u16:2
+10830  2199  0.1  1.5   10 chrome
+10850  2199  0.2  1.6   15 chrome
+10857  2199  0.3  1.7   14 chrome
+10993     2  0.0  0.0    1 kworker/3:1
+11130     2  0.0  0.0    1 kworker/0:0
+11161     2  0.0  0.0    1 kworker/3:2
+11178     2  0.0  0.0    1 kworker/u16:1
+11464     2  0.0  0.0    1 kworker/u16:3
+11682     2  0.0  0.0    1 kworker/0:2
+11731     2  0.0  0.0    1 kworker/1:2
+11809     2  0.0  0.0    1 kworker/2:0
+11820  1563  0.0  0.4    4 gnome-terminal-
+11827 11820  0.0  0.0    1 bash
+11853     2  0.0  0.0    1 kworker/3:0
+12149     2  0.0  0.0    1 kworker/1:1
+12150     2  0.0  0.0    1 kworker/2:2
+12193     2  0.0  0.0    1 kworker/u16:0
+12476     2  0.0  0.0    1 kworker/1:0
+12550     2  0.0  0.0    1 kworker/2:1
+12569     2  0.0  0.0    1 kworker/0:1
+12671  9830  8.8  1.4   29 SystemMonitor
+12679 12671  0.1  0.4    1 QtWebEngineProc
+12681 12679  0.0  0.0    1 QtWebEngineProc
+12701 12681  7.2  0.8   11 QtWebEngineProc
+12721 12671  0.0  0.0    1 sh
+12722 12721  0.0  0.0    1 ps

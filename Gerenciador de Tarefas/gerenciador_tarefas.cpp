@@ -4,6 +4,9 @@
 SystemMonitor::SystemMonitor(QWidget *parent) : QMainWindow(parent), ui(new Ui::SystemMonitor) {
     ui->setupUi(this);
 
+    p.createjsonfile((ui->FilterChoice->currentIndex()));
+    ui->widgetProc->load(QUrl::fromLocalFile("/home/thaislins/Desktop/SO/Projeto-Unidade2/Gerenciador de Tarefas/GerenciadorTarefas/index.html"));
+
     // Define available colors
     availableColors.append(Qt::blue);
     availableColors.append(Qt::red);
@@ -24,12 +27,26 @@ SystemMonitor::SystemMonitor(QWidget *parent) : QMainWindow(parent), ui(new Ui::
     connect(this,SIGNAL(updateMemory(double,double)),SLOT(updateChartMemory(double,double)));
     connect(this,SIGNAL(updateBatteryPercentage(double)),SLOT(updateChartCharge(double)));
     connect(this,SIGNAL(updateDischargeTime(double)),SLOT(updateChartDischarge(double)));
+    connect(this, SIGNAL(updateProcess(int)), SLOT(updateChartProc(int)));
 
     update();
 }
 
 SystemMonitor::~SystemMonitor() {
     delete ui;
+}
+
+void SystemMonitor::on_pbKill_clicked()
+{
+    int a;
+    a = ui->lePID->text().toInt();
+    p.killProc(a);
+    emit(updateProcess(ui->FilterChoice->currentIndex()));
+}
+
+void SystemMonitor::on_pbUpdate_clicked()
+{
+    emit(updateProcess(ui->FilterChoice->currentIndex()));
 }
 
 void SystemMonitor::update()
@@ -105,7 +122,7 @@ void SystemMonitor::initChartCPU() {
     ui->chartCPU->axisRect()->setupFullAxesBox();
 
     // Set y axis
-    ui->chartCPU->yAxis->setRange(0, 100);
+    ui->chartCPU->yAxis->setRange(-0.5, 100);
 
     // Legend Settings
     ui->chartCPU->legend->setVisible(true);
@@ -208,7 +225,7 @@ void SystemMonitor::updateChartCPU(QVector<double> results) {
         ui->chartCPU->graph(i)->addData(key,results[i]);
 
     // make key axis range scroll with the data (at a constant range size of 8):
-    ui->chartCPU->xAxis->setRange(key, 8, Qt::AlignRight);
+    ui->chartCPU->xAxis->setRange(key, 60, Qt::AlignRight);
     ui->chartCPU->replot();
 }
 
@@ -224,7 +241,7 @@ void SystemMonitor::updateChartMemory(double memory,double swap) {
     ui->chartMemory->graph(1)->addData(key, value1);
 
     // make key axis range scroll with the data (at a constant range size of 8):
-    ui->chartMemory->xAxis->setRange(key, 8, Qt::AlignRight);
+    ui->chartMemory->xAxis->setRange(key, 60, Qt::AlignRight);
     ui->chartMemory->replot();
 }
 
@@ -238,7 +255,7 @@ void SystemMonitor::updateChartCharge(double batterypercentage) {
     ui->chartCharge->graph(0)->addData(key,value);
 
     // make key axis range scroll with the data (at a constant range size of 8):
-    ui->chartCharge->xAxis->setRange(key, 8, Qt::AlignRight);
+    ui->chartCharge->xAxis->setRange(key, 60, Qt::AlignRight);
     ui->chartCharge->replot();
 }
 
@@ -252,6 +269,14 @@ void SystemMonitor::updateChartDischarge(double dischargetime)
     ui->chartDischarge->graph(0)->addData(key,value);
 
     // make key axis range scroll with the data (at a constant range size of 8):
-    ui->chartDischarge->xAxis->setRange(key, 8, Qt::AlignRight);
+    ui->chartDischarge->xAxis->setRange(key, 60, Qt::AlignRight);
     ui->chartDischarge->replot();
+}
+
+void SystemMonitor::updateChartProc(int filter)
+{
+    p.createjsonfile(filter);
+    ui->widgetProc->repaint();
+    ui->widgetProc->reload();
+    ui->widgetProc->update();
 }
