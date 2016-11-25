@@ -1,14 +1,15 @@
 #include "memoryinfo.h"
 
-MemoryInfo::MemoryInfo() {
+MemoryInfo::MemoryInfo()
+{
     info = "";
     value = 0.0;
     percentmem = 0.0;
     percentswap = 0.0;
 }
 
-bool MemoryInfo::fileRead() {
-
+bool MemoryInfo::fileRead()
+{
     std::string line;
     std::ifstream file;
     file.open("/proc/meminfo");
@@ -17,7 +18,8 @@ bool MemoryInfo::fileRead() {
     {
         exit(EXIT_FAILURE);
     }
-    else {
+    else
+    {
         v.clear();
         for (int i = 0; i < 16; ++i)
         {
@@ -33,9 +35,10 @@ bool MemoryInfo::fileRead() {
     return false;
 }
 
-void MemoryInfo::calculatePercentage() {
-    if(fileRead()){
-
+void MemoryInfo::calculatePercentage()
+{
+    if(fileRead())
+    {
         double memtotal = v[0], memfree = v[1], swaptotal = v[14],swapfree = v[15];
 
         percentmem = (memtotal - memfree)/memtotal;
@@ -43,10 +46,12 @@ void MemoryInfo::calculatePercentage() {
     }
 }
 
-double MemoryInfo::getPercentMem() {
+double MemoryInfo::getPercentMem()
+{
     return percentmem*100.0;
 }
 
-double MemoryInfo::getPercentSwap() {
+double MemoryInfo::getPercentSwap()
+{
     return percentswap*100.0;
 }

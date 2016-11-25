@@ -11,11 +11,13 @@
 #include "cpuinfo.h"
 #include "process.h"
 
-namespace Ui {
+namespace Ui
+{
 class SystemMonitor;
 }
 
-class SystemMonitor : public QMainWindow {
+class SystemMonitor : public QMainWindow
+{
     Q_OBJECT
 
  public:

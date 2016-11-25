@@ -14,7 +14,8 @@ bool BatteryPercentage::fileRead()
     {
         exit(EXIT_FAILURE);
     }
-    else {
+    else
+    {
         file >> percentage;
         file.close();
         return true;
@@ -24,7 +25,8 @@ bool BatteryPercentage::fileRead()
 
 double BatteryPercentage::getBatteryPercentage()
 {
-    if(fileRead()){
+    if(fileRead())
+    {
         return percentage;
     }
     return percentage;

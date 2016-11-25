@@ -1,8 +1,8 @@
 #include <QVector>
-#include <fstream>
-#include <cstdlib>
 #include <string>
 #include <sstream>
+#include <fstream>
+#include <cstdlib>
 
 #ifndef MEMORYINFO_H
 #define MEMORYINFO_H

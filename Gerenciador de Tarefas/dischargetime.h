@@ -1,8 +1,8 @@
-#include <fstream>
 #include <QVector>
 #include <string>
-#include <cstdlib>
 #include <sstream>
+#include <fstream>
+#include <cstdlib>
 
 #ifndef DISCHARGETIME_H
 #define DISCHARGETIME_H

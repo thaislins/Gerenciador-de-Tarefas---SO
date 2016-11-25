@@ -1,7 +1,8 @@
 #include "gerenciador_tarefas.h"
 #include "ui_gerenciador_tarefas.h"
 
-SystemMonitor::SystemMonitor(QWidget *parent) : QMainWindow(parent), ui(new Ui::SystemMonitor) {
+SystemMonitor::SystemMonitor(QWidget *parent) : QMainWindow(parent), ui(new Ui::SystemMonitor)
+{
     ui->setupUi(this);
 
     p.createjsonfile((ui->FilterChoice->currentIndex()));
@@ -32,7 +33,8 @@ SystemMonitor::SystemMonitor(QWidget *parent) : QMainWindow(parent), ui(new Ui::
     update();
 }
 
-SystemMonitor::~SystemMonitor() {
+SystemMonitor::~SystemMonitor()
+{
     delete ui;
 }
 
@@ -107,11 +109,13 @@ void SystemMonitor::runChartDischargeTime()
 // Init Charts
 //
 
-void SystemMonitor::initChartCPU() {
+void SystemMonitor::initChartCPU()
+{
     unsigned nCPUs = 4;
 
     // Create pens for each CPU and set his name
-    for (auto i = 0u; i < nCPUs; i++) {
+    for (auto i = 0u; i < nCPUs; i++)
+    {
         ui->chartCPU->addGraph();
         ui->chartCPU->graph(i)->setPen(QPen(availableColors.at(i)));
         ui->chartCPU->graph(i)->setName("CPU " + QString::number(i + 1));
@@ -138,7 +142,8 @@ void SystemMonitor::initChartCPU() {
     //timerCPU.start(0); // Interval 0 means to refresh as fast as possible
 }
 
-void SystemMonitor::initChartMemory() {
+void SystemMonitor::initChartMemory()
+{
     // Create pens for RAM
     ui->chartMemory->addGraph();
     ui->chartMemory->graph(0)->setPen(QPen(availableColors.at(0)));
@@ -166,7 +171,8 @@ void SystemMonitor::initChartMemory() {
     connect(ui->chartMemory->yAxis, SIGNAL(rangeChanged(QCPRange)), ui->chartMemory->yAxis2, SLOT(setRange(QCPRange)));
 }
 
-void SystemMonitor::initChartCharge() {
+void SystemMonitor::initChartCharge()
+{
     // Create pen for Charge
     ui->chartCharge->addGraph();
     ui->chartCharge->graph(0)->setPen(QPen(availableColors.at(0)));
@@ -189,7 +195,8 @@ void SystemMonitor::initChartCharge() {
     connect(ui->chartCharge->yAxis, SIGNAL(rangeChanged(QCPRange)), ui->chartCharge->yAxis2, SLOT(setRange(QCPRange)));
 }
 
-void SystemMonitor::initChartDischarge() {
+void SystemMonitor::initChartDischarge()
+{
     // Create pen for Charge
     ui->chartDischarge->addGraph();
     ui->chartDischarge->graph(0)->setPen(QPen(availableColors.at(1)));
@@ -216,7 +223,8 @@ void SystemMonitor::initChartDischarge() {
 // Update Charts
 //
 
-void SystemMonitor::updateChartCPU(QVector<double> results) {
+void SystemMonitor::updateChartCPU(QVector<double> results)
+{
     static QTime time(QTime::currentTime());
     double key = time.elapsed()/1000.0;
     
@@ -229,8 +237,8 @@ void SystemMonitor::updateChartCPU(QVector<double> results) {
     ui->chartCPU->replot();
 }
 
-void SystemMonitor::updateChartMemory(double memory,double swap) {
-
+void SystemMonitor::updateChartMemory(double memory,double swap)
+{
     static QTime time(QTime::currentTime());
     double key = time.elapsed()/1000.0;
     double value0 = memory;
@@ -245,8 +253,8 @@ void SystemMonitor::updateChartMemory(double memory,double swap) {
     ui->chartMemory->replot();
 }
 
-void SystemMonitor::updateChartCharge(double batterypercentage) {
-
+void SystemMonitor::updateChartCharge(double batterypercentage)
+{
     static QTime time(QTime::currentTime());
     double key = time.elapsed()/1000.0;
     double value = batterypercentage;

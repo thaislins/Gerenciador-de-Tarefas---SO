@@ -9,7 +9,6 @@ CpuInfo::CpuInfo()
 
     if (fileRead())
     {
-
         for (int i = 0; i < 4; ++i)
         {
             int n = i * 4;
@@ -24,7 +23,6 @@ CpuInfo::CpuInfo()
 
 bool CpuInfo::fileRead()
 {
-
     std::string line;
     std::ifstream file;
 
@@ -41,7 +39,8 @@ bool CpuInfo::fileRead()
             getline(file,line);
             std::istringstream iss(line);
             getline(iss,info,' ');
-            if(i >= 1) {
+            if(i >= 1)
+            {
                 for (int j = 0; j < 4; j++)
                 {
                     iss >> value;
@@ -83,9 +82,8 @@ void CpuInfo::calculateCPU()
     }
 }
 
-void CpuInfo::currentToprev() {
-
-    //prev.clear();
+void CpuInfo::currentToprev()
+{
     prevUsage.clear();
     prevTotal.clear();
 

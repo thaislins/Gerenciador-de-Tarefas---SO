@@ -1,16 +1,14 @@
 #include <QVector>
 #include <sstream>
-#include <iostream>
 #include <fstream>
 #include <cstdlib>
-#include <chrono>
-#include <thread>
 
 #ifndef CPUINFO_H
 #define CPUINFO_H
 
 
-class CpuInfo {
+class CpuInfo
+{
     private:
         std::string info;
         long double value;

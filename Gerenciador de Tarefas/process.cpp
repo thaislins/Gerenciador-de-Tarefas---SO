@@ -22,7 +22,8 @@ void Process::filemanipulation()
         exit(EXIT_FAILURE);
     else {
         getline(file, line);
-        while(getline(file,line)) {
+        while(getline(file,line))
+        {
             Process p;
             std::istringstream iss(line);
 
@@ -38,7 +39,6 @@ void Process::filemanipulation()
     }
 
     file.close();
-    //system("rm processinfo");
 }
 
 void Process::createjsonfile(int filter)
@@ -52,8 +52,8 @@ void Process::createjsonfile(int filter)
     file.open("../GerenciadorTarefas/processos.json");
 
     file << "{\"name\": \"processes\", \"children\": [";
-    for (std::pair<int, std::vector<Process>> map_pair : info) {
-
+    for (std::pair<int, std::vector<Process>> map_pair : info)
+    {
         std::vector<Process> p = map_pair.second;
         if(i++ == 0)
             file << "";
@@ -62,20 +62,14 @@ void Process::createjsonfile(int filter)
 
         file << "{\"name\":\"" << p[0].name << "\",\"children\":[";
 
-        for (Process proc : map_pair.second) {
-
+        for (Process proc : map_pair.second)
+        {
             if (filter == 0)
                 update = (proc.cpu + 0.1)*1000;
             else if (filter == 1)
                 update = proc.threads;
             else if(filter == 2)
                 update = (proc.memory + 0.1) * 1000;
-            else
-            {
-                update = (proc.memory + proc.cpu + 0.1) *1000;
-                update *= 0.5;
-            }
-
 
             if(j++ == 0)
                 file << "";
@@ -92,7 +86,7 @@ void Process::createjsonfile(int filter)
 
 }
 
-void funcaoSignalHandler(int sig)
+void SignalHandler(int sig)
 {
   exit(1);
 }
@@ -100,6 +94,6 @@ void funcaoSignalHandler(int sig)
 void Process::killProc(int pid)
 {
     pid_t value = pid;
-    signal(SIGKILL, funcaoSignalHandler);
+    signal(SIGKILL, SignalHandler);
     kill(value, SIGKILL);
 }
