@@ -149,7 +149,7 @@
  2180  2091  0.0  0.0    1 dbus-daemon
  2192  2091  0.0  0.1    1 window-stack-br
  2233  2091  0.0  0.0    1 gpg-agent
- 2246  2091  0.1  0.0    4 ibus-daemon
+ 2246  2091  0.2  0.0    4 ibus-daemon
  2254  2091  0.0  0.0    3 gvfsd
  2262  2091  0.0  0.0    6 gvfsd-fuse
  2270  2246  0.0  0.0    4 ibus-dconf
@@ -168,7 +168,7 @@
  2350  2091  0.0  0.2    4 gnome-session-b
  2356  2091  0.0  0.4    4 unity-panel-ser
  2369  2091  0.0  0.0    3 dconf-service
- 2372  2091  0.5  2.6    4 compiz
+ 2372  2091  0.6  2.6    4 compiz
  2399  2091  0.0  0.1    4 indicator-messa
  2400  2091  0.0  0.0    4 indicator-bluet
  2401  2091  0.0  0.1    4 indicator-power
@@ -208,11 +208,11 @@
  2723  2722  0.0  0.0    1 nacl_helper
  2726  2722  0.0  0.1    1 chrome
  2734  2091  0.0  0.0    1 gconfd-2
- 2805  2712  0.3  1.4    3 chrome
+ 2805  2712  0.3  1.5    3 chrome
  2807  2805  0.0  0.1    1 chrome
- 2875  2726  0.1  2.0   12 chrome
- 2914  2726  0.9  4.0   15 chrome
- 2943  2726  0.0  1.3   12 chrome
+ 2875  2726  0.1  2.0   11 chrome
+ 2914  2726  0.8  4.0   15 chrome
+ 2943  2726  0.0  1.4   10 chrome
  2970  2726  0.2  1.7   16 chrome
  2977  2350  0.0  0.2    7 zeitgeist-datah
  2984  2091  0.0  0.0    1 sh
@@ -226,7 +226,7 @@
  3138  2726  0.0  0.5    2 chrome
  3259  2350  0.0  0.3    4 update-notifier
  3287  2350  0.0  0.1    4 deja-dup-monito
- 3308  2726  0.4  0.5    3 chrome
+ 3308  2726  0.3  0.5    3 chrome
  3314  2091  0.0  0.4    4 notify-osd
  3392  2091  0.0  0.2    4 unity-scope-hom
  3403  2091  0.0  0.3    4 unity-scope-loa
@@ -234,34 +234,45 @@
  3434  2091  0.4  1.9   35 spotify
  3448  3434  0.0  0.5    1 spotify
  3462  3434  0.1  1.3    3 spotify
- 3477  3448  0.6  3.7   14 spotify
+ 3477  3448  0.5  3.7   14 spotify
  3503  2091  0.0  0.2    4 gvfsd-http
  3669     2  0.0  0.0    1 kworker/u16:0
  3740     2  0.0  0.0    1 kworker/1:1
  3742     2  0.0  0.0    1 kworker/0:1
- 3763  2091  6.5  5.4   10 qtcreator
+ 3763  2091  5.8  5.4    7 qtcreator
  3841     2  0.0  0.0    1 kworker/2:0
  4118     2  0.0  0.0    1 kworker/3:2
  4186     2  0.0  0.0    1 kworker/u16:2
  4500     2  0.0  0.0    1 kworker/3:0
  4510     2  0.0  0.0    1 kworker/1:0
- 4597     2  0.0  0.0    1 kworker/0:0
  4602     2  0.0  0.0    1 kworker/u16:3
- 4728  3763  1.0  1.5   29 SystemMonitor
+ 4728  3763  0.9  1.5   27 SystemMonitor
  4738  4728  0.0  0.4    1 QtWebEngineProc
  4740  4738  0.0  0.0    1 QtWebEngineProc
- 4760  4740  0.1  0.8   11 QtWebEngineProc
+ 4760  4740  0.1  0.8    8 QtWebEngineProc
  4905     2  0.0  0.0    1 kworker/2:2
  5114     2  0.0  0.0    1 kworker/0:2
- 5153  3763  0.9  1.5   29 SystemMonitor
+ 5153  3763  0.8  1.5   29 SystemMonitor
  5163  5153  0.0  0.4    1 QtWebEngineProc
  5165  5163  0.0  0.0    1 QtWebEngineProc
- 5185  5165  0.1  0.8   11 QtWebEngineProc
- 5243  3763  1.2  1.5   28 SystemMonitor
+ 5185  5165  0.0  0.8   11 QtWebEngineProc
+ 5243  3763  0.9  1.5   28 SystemMonitor
  5251  5243  0.0  0.4    1 QtWebEngineProc
  5253  5251  0.0  0.0    1 QtWebEngineProc
- 5273  5253  0.3  0.8   12 QtWebEngineProc
+ 5273  5253  0.0  0.8   12 QtWebEngineProc
  5305     2  0.0  0.0    1 kworker/2:1
- 5356  3763  0.0  0.6    3 SystemMonitor
- 5360  5356  0.0  0.0    1 sh
- 5361  5360  0.0  0.0    1 ps
+ 5408     2  0.0  0.0    1 kworker/u16:1
+ 5434     2  0.0  0.0    1 kworker/1:2
+ 5466     2  0.0  0.0    1 kworker/3:1
+ 5481  2091  0.0  0.0    4 gvfsd-network
+ 5510  2091  0.0  0.0    3 gvfsd-dnssd
+ 5524     2  0.0  0.0    1 kworker/0:0
+ 5528     1  0.0  0.0    1 cupsd
+ 5530  5528  0.0  0.0    1 dbus
+ 5531  5528  0.0  0.0    1 dbus
+ 5532  5528  0.0  0.0    1 dbus
+ 5533  5528  0.0  0.0    1 dbus
+ 5534  5528  0.0  0.0    1 dbus
+ 5560  3763  0.0  0.6    3 SystemMonitor
+ 5564  5560  0.0  0.0    1 sh
+ 5565  5564  0.0  0.0    1 ps

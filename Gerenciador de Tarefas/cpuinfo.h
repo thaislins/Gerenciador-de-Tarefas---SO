@@ -22,7 +22,6 @@ class CpuInfo
         CpuInfo();
 
         bool fileRead();
-        void print();
         void currentToprev();
         void calculateCPU();
         double getCpuValue(int i);

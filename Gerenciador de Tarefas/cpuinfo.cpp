@@ -61,6 +61,18 @@ bool CpuInfo::fileRead()
     return false;
 }
 
+void CpuInfo::currentToprev()
+{
+    prevUsage.clear();
+    prevTotal.clear();
+
+    for (int i = 0; i < currentTotal.size(); ++i)
+    {
+        prevUsage.push_back(currentUsage[i]);
+        prevTotal.push_back(currentTotal[i]);
+    }
+}
+
 void CpuInfo::calculateCPU()
 {
     currentToprev();
@@ -79,18 +91,6 @@ void CpuInfo::calculateCPU()
             currentUsage.push_back(usage);
             currentTotal.push_back(total);
         }
-    }
-}
-
-void CpuInfo::currentToprev()
-{
-    prevUsage.clear();
-    prevTotal.clear();
-
-    for (int i = 0; i < currentTotal.size(); ++i)
-    {
-        prevUsage.push_back(currentUsage[i]);
-        prevTotal.push_back(currentTotal[i]);
     }
 }
 
